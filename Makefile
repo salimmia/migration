@@ -2,9 +2,9 @@ include env/postgres.env
 include env/createdb.env
 
 postgres:
-	docker run --name postgres16 -p 5432:5432 --env-file env/postgres.env -d --rm postgres:16.1-alpine
+	docker run --name postgres16 --env-file env/postgres.env -p 5432:5432 -v pgdata:/var/lib/postgresql/data -d --rm postgres:16.1-alpine
 
-postgresdrop:
+droppostgres:
 	docker stop postgres16
 
 createdb:
